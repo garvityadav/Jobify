@@ -15,3 +15,4 @@ dist-ssr
 #env
 .env
 node_modules
+README2.md
