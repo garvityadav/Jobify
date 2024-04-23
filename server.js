@@ -8,7 +8,7 @@ import express from "express";
 import morgan from "morgan";
 import { nanoid } from "nanoid";
 import cookieParser from "cookie-parser";
-
+import cloudinary from "cloudinary";
 //routers
 import authRouter from "./routes/authRoute.js";
 import jobRouter from "./routes/jobRoute.js";
@@ -24,6 +24,15 @@ import { fileURLToPath } from "url";
 //middleware
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
+//
+
+//cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
 //
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

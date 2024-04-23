@@ -1,7 +1,7 @@
-import { FormRow } from "../components";
+import { FormRow, SubmitBtn } from "../components";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { useOutletContext } from "react-router-dom";
-import { useNavigation, Form } from "react-router-dom";
+import { Form } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
@@ -24,8 +24,6 @@ export const action = async ({ request }) => {
 const Profile = () => {
   const { user } = useOutletContext();
   const { name, lastName, email, location } = user;
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
 
   return (
     <Wrapper>
@@ -35,7 +33,7 @@ const Profile = () => {
         <div className='form-center'>
           <div className='form-row'>
             <label htmlFor='image' className='form-label'>
-              Select an image file (max 0.5 MB):
+              Select an image file (max 0.5 MB)
             </label>
             <input
               type='file'
@@ -50,13 +48,7 @@ const Profile = () => {
           <FormRow type='text' name='lastName' defaultValue={lastName} />
           <FormRow type='email' name='email' defaultValue={email} />
           <FormRow type='text' name='location' defaultValue={location} />
-          <button
-            type='submit'
-            className='btn btn-block form-btn'
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "submitting..." : "save changes"}
-          </button>
+          <SubmitBtn formBtn buttonName='Save Changes' />
         </div>
       </Form>
     </Wrapper>
